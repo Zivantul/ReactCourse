@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import { Message } from './Message'
 import styles from './index.module.css'
@@ -7,11 +7,22 @@ const userPhrase = 'фраза, которую скажет пользовате
 
 
 const App = () => {
+  const [messageList, setMessageList] = useState([
+    { "text": 'text1', "author": 'user' },
+  ]);
+  const [value, setValue] = ("");
+
+  useEffect(() => {
+
+  }, [messageList])
+
   return (
     <div className={styles.message}>
-      <Message userPhrase={userPhrase} />
+      //<Message userPhrase={userPhrase} />
+      <input value={value} onChange={e => setValue(e.target.value)} />
+      <div>{JSON.stringify(messageList)}</div>
+      <div>{JSON.stringify(value)}</div>
     </div>
-
   )
 }
 
